@@ -11,5 +11,5 @@ template <typename Ttype, typename Func> void iter(Ttype tab[], const unsigned l
 
 template <typename Ttype> void funkyfunc(Ttype &goofyaaahargument)
 {
-    goofyaaahargument += 100000;
+    goofyaaahargument += 10;
 }

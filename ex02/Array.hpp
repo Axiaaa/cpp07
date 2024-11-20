@@ -15,9 +15,10 @@ class Array {
         Array();
         Array(unsigned int n);
         Array(const Array& src);
+        ~Array();
         Array& operator=(const Array& rhs);
         Ttype& operator[](const unsigned long long int index) const;
-        const size_t size() const noexcept;
+        size_t size() const;
 
 
     class OutOfBoundsException : public std::exception {
@@ -26,10 +27,9 @@ class Array {
 
 };
 
-
-
 template <typename Ttype> Array<Ttype>::Array() : _tab(NULL), _size(0) {}
 
+template <typename Ttype> Array<Ttype>::~Array() { delete[] _tab; }
 
 template <typename Ttype> Array<Ttype>::Array(unsigned int n) : _size(n) {
     
@@ -58,7 +58,7 @@ template <typename Ttype> Array<Ttype>& Array<Ttype>::operator=(const Array& rhs
     return *this;
 }
 
-template <typename Ttype> const size_t Array<Ttype>::size() const noexcept { return this->_size; }
+template <typename Ttype> size_t Array<Ttype>::size() const { return this->_size; }
 
 template <typename Ttype> Ttype& Array<Ttype>::operator[](const unsigned long long int index) const {
     if (index > this->_size || _tab == NULL)

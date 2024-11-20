@@ -31,11 +31,20 @@ void testArrayCopy() {
     }
 }
 
-void testArrayOutOfBounds() {
+void testArrayNull() {
 
     try {
         Array<int> a;
         std::cout << a[10] << std::endl;
+    } catch (std::exception &e) {
+        std::cout << "Exception caught: " << e.what() << std::endl;
+    }
+}
+
+void testOutOfBounds() {
+    Array<int> a(5);
+    try {
+        a[10] = 42;
     } catch (std::exception &e) {
         std::cout << "Exception caught: " << e.what() << std::endl;
     }
@@ -48,7 +57,9 @@ int main() {
     testArrayString();
     std::cout << "Testing Array copy:" << std::endl;
     testArrayCopy();
-    std::cout << "Testing Array out of bounds:" << std::endl;
-    testArrayOutOfBounds();
+    std::cout << "Testing Null Array" << std::endl;
+    testArrayNull();
+    std::cout << "Out of bounds test" << std::endl;
+    testOutOfBounds();
     return 0;
 }
